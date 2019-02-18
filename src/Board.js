@@ -31,7 +31,6 @@ class Board extends React.Component {
   
   componentDidMount() {
     this.initializeCell()
-    // console.log(`board: ` + this.state.board[0].value)
   }
 
   onTimeOut = () => {
@@ -67,14 +66,9 @@ class Board extends React.Component {
     let newCellValue = []
      
     let selectedCell = this.state.randomCell || 0
-    // console.log(`cell value: ` + selectedCell)
     newCellValue = this.state.board.slice()
     let value = newCellValue[selectedCell].value
-    // console.log(`new value1: ` + newCellValue[selectedCell].value)
     newCellValue[selectedCell].value = (value === 0) ? 1 : 0
-    // console.log(`new cell value: ` + newCellValue[selectedCell].value)
-    // console.log(`new cell row : ` + newCellValue[selectedCell].row)
-    // console.log(`new cell column: ` + newCellValue[selectedCell].column)
     this.setState({
       board: [...newCellValue]
     })
