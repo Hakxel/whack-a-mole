@@ -26,11 +26,7 @@ class Board extends React.Component {
     // console.log(`cell value: ` + cell[0].value)
     this.setState({
       board: cell       
-    },
-    function(){
-      this.interval = setInterval(this.modifyCell, 2000)
-    }
-    )
+    })
   }
   
   componentDidMount() {
@@ -42,40 +38,46 @@ class Board extends React.Component {
     clearInterval(this.interval)
   }
 
+  onTick = () => {
+    if(this.state.timer < 15) {
+      this.increaseTimer()
+      this.getRandomCell()
+      this.modifyCell()
+    }
+    else {
+      console.log(`Time up...`)
+    }
+  }
+
+  getRandomCell = () => {
+    let randCell = 0
+    randCell = Math.floor(Math.random() * 9)
+    this.setState({
+      randomCell: randCell
+    })
+  }
+
   increaseTimer = () => {
     this.setState({
-      timer: this.state.timer +1
+      timer: this.state.timer +1,
     })
   }
  
   modifyCell = () => {
     let newCellValue = []
-    let randCell = 0
-    if (this.state.timer < 15) {
-
-      randCell = Math.floor(Math.random() * 10)
-      this.setState({
-        randomCell: randCell
-      },
-      function() {      
-        let selectedCell = this.state.randomCell || 0
-        // console.log(`cell value: ` + selectedCell)
-        newCellValue = this.state.board.slice()
-        let value = newCellValue[selectedCell].value
-        // console.log(`new value1: ` + newCellValue[selectedCell].value)
-        newCellValue[selectedCell].value = (value === 0) ? 1 : 0
-        // console.log(`new cell value: ` + newCellValue[selectedCell].value)
-        // console.log(`new cell row : ` + newCellValue[selectedCell].row)
-        // console.log(`new cell column: ` + newCellValue[selectedCell].column)
-        this.setState({
-          board: [...newCellValue]
-        })
-      })
-    } 
-    else {
-      clearInterval(this.interval)
-      console.log(`Time up...`)
-    }
+     
+    let selectedCell = this.state.randomCell || 0
+    // console.log(`cell value: ` + selectedCell)
+    newCellValue = this.state.board.slice()
+    let value = newCellValue[selectedCell].value
+    // console.log(`new value1: ` + newCellValue[selectedCell].value)
+    newCellValue[selectedCell].value = (value === 0) ? 1 : 0
+    // console.log(`new cell value: ` + newCellValue[selectedCell].value)
+    // console.log(`new cell row : ` + newCellValue[selectedCell].row)
+    // console.log(`new cell column: ` + newCellValue[selectedCell].column)
+    this.setState({
+      board: [...newCellValue]
+    })
   }
 
   render() {
@@ -85,7 +87,7 @@ class Board extends React.Component {
         <div className="status">
         {randomCell}
         <div>{timer}</div>
-          {(timer < 15) && <Timer onTimeOut = {this.onTimeOut} increaseTimer = {this.increaseTimer}/>}
+          {(timer < 15) && <Timer onTimeOut = {this.onTimeOut} onTick = {this.onTick}/>}
             {/* <div>
               {board[0] && board[randomCell].value === 1 ? <div>Mole</div> : <div>No mole</div>}
               {board[1] && board[randomCell].value === 1 ? <div>Mole</div> : <div>No mole</div>}

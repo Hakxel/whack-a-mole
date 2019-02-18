@@ -13,7 +13,7 @@ class Timer extends React.Component {
       this.setState(prevState => ({
         seconds: prevState.seconds - 1
       }));
-      this.props.increaseTimer()
+      this.props.onTick()
     }
     else {
       this.setState({
@@ -28,9 +28,9 @@ class Timer extends React.Component {
     this.interval = setInterval(() => this.tick(), 1000);
   }
 
-  // componentWillUnmount() {
-  //   clearInterval(this.interval);
-  // }
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
 
   render() {
     return (
