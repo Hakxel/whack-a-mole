@@ -7,83 +7,28 @@ class Board extends React.Component {
     this.state = {
       board: [],
       timer: 0,
+      randomCell: 0,
     }
   }
 
-  // addTimer = () => {
-  //   this.setState({
-  //     timer: this.state.timer + 1
-  //   })
-  // }
-  
-  // componentDidMount() {
-  //   this.initializeCells()
-  //   this.board = setInterval(this.randomCells, 1000)
-  // }
-
-  // componentWillUnmount() {
-  //   clearInterval(this.board)
-  // }
-
-  // initializeCells = () => {
-  //   let initialBoard = this.state.board.slice()
-  //   for(let i = 0; i < 3; i++) {
-  //     for(let j = 0; j < 3; j++) {
-  //       initialBoard.push(
-  //         {
-  //         row: i,
-  //         column: j,
-  //         value: 0
-  //         }
-  //       )
-  //     }
-  //   }
-  //   console.log(initialBoard)
-  //   this.setState({
-  //     board: [...initialBoard],
-  //   })
-  //   console.log(this.state.board)
-  // }
-
-  // randomCells = () => {
-
-  //   // let times = 0
-  //   let pos = -1
-
-  //   pos = Math.floor(Math.random() * 9)
-  //   let tmp = this.state.board[pos]
-  //   this.setState(state => {
-  //     const board = state.board.map((item, j) => {
-  //       if (pos === j) //Si la posicion x que voy es la posicion a cambiar
-  //         return {
-  //           row: tmp.row,
-  //           column: tmp.column,
-  //           value: 1
-  //         }
-  //       else
-  //         return item
-  //     })
-  //     return board;
-  //   })
-  //   console.log(this.state.board)
-  // }
-
   initializeCell = () => {
-    console.log(`board1: ` + this.state.board[0])
+    // console.log(`board1: ` + this.state.board[0])
     let cell = []
-    cell.push({
-      row: 0,
-      column: 0,
-      value: 0,
-    })
-    console.log(`cell row: ` + cell[0].row)
-    console.log(`cell column: ` + cell[0].column)
-    console.log(`cell value: ` + cell[0].value)
+    for ( let i = 0; i < 9; i++) {
+      cell.push({
+        row: i,
+        column: i,
+        value: 0,
+      })
+    }
+    // console.log(`cell row: ` + cell[0].row)
+    // console.log(`cell column: ` + cell[0].column)
+    // console.log(`cell value: ` + cell[0].value)
     this.setState({
       board: cell       
     },
     function(){
-      this.interval = setInterval(this.modifyCell, 1000)
+      this.interval = setInterval(this.modifyCell, 2000)
     }
     )
   }
@@ -93,38 +38,70 @@ class Board extends React.Component {
     // console.log(`board: ` + this.state.board[0].value)
   }
 
-  handleClick = (e) => {
-    e.preventDefault()
+  onTimeOut = () => {
     clearInterval(this.interval)
-    // this.modifyCell()
   }
 
+  increaseTimer = () => {
+    this.setState({
+      timer: this.state.timer +1
+    })
+  }
+ 
   modifyCell = () => {
     let newCellValue = []
-    newCellValue = this.state.board.slice()
-    let value = newCellValue[0].value
-    console.log(`new value1: ` + newCellValue[0].value)
-    newCellValue[0].value = (value === 0) ? 1 : 0
-    console.log(`new value2: ` + newCellValue[0].value)
-    this.setState({
-      board: [...newCellValue]
-    }, function() {
-      console.log(`new value3: ` + this.state.board[0].value)
-      
-    })
+    let randCell = 0
+    if (this.state.timer < 15) {
 
+      randCell = Math.floor(Math.random() * 10)
+      this.setState({
+        randomCell: randCell
+      },
+      function() {      
+        let selectedCell = this.state.randomCell || 0
+        // console.log(`cell value: ` + selectedCell)
+        newCellValue = this.state.board.slice()
+        let value = newCellValue[selectedCell].value
+        // console.log(`new value1: ` + newCellValue[selectedCell].value)
+        newCellValue[selectedCell].value = (value === 0) ? 1 : 0
+        // console.log(`new cell value: ` + newCellValue[selectedCell].value)
+        // console.log(`new cell row : ` + newCellValue[selectedCell].row)
+        // console.log(`new cell column: ` + newCellValue[selectedCell].column)
+        this.setState({
+          board: [...newCellValue]
+        })
+      })
+    } 
+    else {
+      clearInterval(this.interval)
+      console.log(`Time up...`)
+    }
   }
 
   render() {
-    // const {board} = this.state
+    const {board, randomCell, timer} = this.state
     return(
       <div className="Board">
-        <div className="status" onClick={this.handleClick}>
-          {/* <Timer/> */}
-          <div>Click here to stop</div>
-          {this.state.board[0] && this.state.board[0].value == 1 ? <div>Mole</div> : <div>No mole</div>}
-          <div>
-          </div>
+        <div className="status">
+        {randomCell}
+        <div>{timer}</div>
+          {(timer < 15) && <Timer onTimeOut = {this.onTimeOut} increaseTimer = {this.increaseTimer}/>}
+            {/* <div>
+              {board[0] && board[randomCell].value === 1 ? <div>Mole</div> : <div>No mole</div>}
+              {board[1] && board[randomCell].value === 1 ? <div>Mole</div> : <div>No mole</div>}
+              {board[2] && board[randomCell].value === 1 ? <div>Mole</div> : <div>No mole</div>}
+              </div>
+              <div>
+              {board[3] && board[randomCell].value === 1 ? <div>Mole</div> : <div>No mole</div>}
+              {board[4] && board[randomCell].value === 1 ? <div>Mole</div> : <div>No mole</div>}
+              {board[5] && board[randomCell].value === 1 ? <div>Mole</div> : <div>No mole</div>}
+              </div>
+              <div>
+              {board[6] && board[randomCell].value === 1 ? <div>Mole</div> : <div>No mole</div>}
+              {board[7] && board[randomCell].value === 1 ? <div>Mole</div> : <div>No mole</div>}
+              {board[8] && board[randomCell].value === 1 ? <div>Mole</div> : <div>No mole</div>}
+            </div> */}
+            {board[0] && board[randomCell].value === 1 ? <div>Mole</div> : <div>No mole</div>}
         </div>
       </div>
     )
