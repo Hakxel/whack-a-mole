@@ -1,5 +1,6 @@
 import React from 'react'
 import Timer from './Timer'
+import './Board.css'
 
 class Board extends React.Component {
   constructor() {
@@ -30,9 +31,13 @@ class Board extends React.Component {
       board: cell       
     })
   }
+
+  startGame = () => {
+    this.initializeCell()
+  }
   
   componentDidMount() {
-    this.initializeCell()
+    this.startGame()
   }
 
   onTimeOut = () => {
@@ -47,7 +52,18 @@ class Board extends React.Component {
     }
     else {
       console.log(`Time up...`)
+      this.resetBoard()
     }
+  }
+
+  resetBoard() {
+    this.setState({
+      board: [],
+      timer: 0,
+      randomCell: 0,
+      points: 0
+    })
+    this.startGame()
   }
 
   getRandomCell = () => {
@@ -97,10 +113,12 @@ class Board extends React.Component {
   render() {
     const {board, points} = this.state
     return(
-      <div className="Board">
+      <div className="game-area">
         <div className="status">
           Your points: {points}
           <Timer onTimeOut = {this.onTimeOut} onTick = {this.onTick}/>
+        </div>
+        <div className="board">
           <div className="row">
             {board[0] && board[0].value === 1 ? 
             <div className="with-mole" onClick={this.onMoleClick}>Mole</div> : 
@@ -139,7 +157,7 @@ class Board extends React.Component {
             {board[8] && board[8].value === 1 ? 
             <div className="with-mole" onClick={this.onMoleClick}>Mole</div> : 
             <div className="no-mole">No mole</div>}
-        </div>
+          </div>
         </div>
       </div>
     )

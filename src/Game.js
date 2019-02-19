@@ -6,7 +6,7 @@ class Game extends Component {
   render() {
     return (
       <div className="game">
-        hello
+        Whack-a-mole
         <Board />
       </div>
     );
