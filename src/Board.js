@@ -10,6 +10,7 @@ class Board extends React.Component {
       timer: 0,
       randomCell: 0,
       points: 0,
+      start: false,
     }
   }
 
@@ -28,20 +29,24 @@ class Board extends React.Component {
       }
     }
     this.setState({
-      board: cell       
+      board: cell,
+      start: true,       
     })
   }
-
-  startGame = () => {
-    this.initializeCell()
-  }
   
-  componentDidMount() {
-    this.startGame()
+  onStartClick = () => {
+    this.resetBoard()
+    this.initializeCell()
   }
 
   onTimeOut = () => {
-    clearInterval(this.interval)
+    let finalValues = this.state.board.slice()
+    for ( let i = 0; i < 9; i++) {
+      finalValues[i].value = 0
+    }
+    this.setState({
+      board: [...finalValues]
+    })
   }
 
   onTick = () => {
@@ -52,7 +57,6 @@ class Board extends React.Component {
     }
     else {
       console.log(`Time up...`)
-      this.resetBoard()
     }
   }
 
@@ -61,9 +65,9 @@ class Board extends React.Component {
       board: [],
       timer: 0,
       randomCell: 0,
-      points: 0
+      points: 0,
+      start: false,
     })
-    this.startGame()
   }
 
   getRandomCell = () => {
@@ -111,52 +115,53 @@ class Board extends React.Component {
   }
 
   render() {
-    const {board, points} = this.state
+    const {board, points, start} = this.state
     return(
       <div className="game-area">
+      <div onClick={this.onStartClick}>Click here to start</div>
         <div className="status">
           Your points: {points}
-          <Timer onTimeOut = {this.onTimeOut} onTick = {this.onTick}/>
+          {start && <Timer onTimeOut = {this.onTimeOut} onTick = {this.onTick}/>}
         </div>
         <div className="board">
           <div className="row">
             {board[0] && board[0].value === 1 ? 
-            <div className="with-mole" onClick={this.onMoleClick}>Mole</div> : 
-            <div className="no-mole">No mole</div>}
+            <div className="with-mole" onClick={this.onMoleClick}><img src="cartoon-funny-mole.jpg"/></div> : 
+            <div className="no-mole"></div>}
 
             {board[1] && board[1].value === 1 ? 
-            <div className="with-mole" onClick={this.onMoleClick}>Mole</div> : 
-            <div className="no-mole">No mole</div>}
+            <div className="with-mole" onClick={this.onMoleClick}><img src="cartoon-funny-mole.jpg"/></div> : 
+            <div className="no-mole"></div>}
 
             {board[2] && board[2].value === 1 ? 
-            <div className="with-mole" onClick={this.onMoleClick}>Mole</div> : 
-            <div className="no-mole">No mole</div>}
+            <div className="with-mole" onClick={this.onMoleClick}><img src="cartoon-funny-mole.jpg"/></div> : 
+            <div className="no-mole"></div>}
           </div>
           <div className="row">
             {board[3] && board[3].value === 1 ? 
-            <div className="with-mole" onClick={this.onMoleClick}>Mole</div> : 
-            <div className="no-mole">No mole</div>}
+            <div className="with-mole" onClick={this.onMoleClick}><img src="cartoon-funny-mole.jpg"/></div> : 
+            <div className="no-mole"></div>}
 
             {board[4] && board[4].value === 1 ? 
-            <div className="with-mole" onClick={this.onMoleClick}>Mole</div> : 
-            <div className="no-mole">No mole</div>}
+            <div className="with-mole" onClick={this.onMoleClick}><img src="cartoon-funny-mole.jpg"/></div> : 
+            <div className="no-mole"></div>}
 
             {board[5] && board[5].value === 1 ? 
-            <div className="with-mole" onClick={this.onMoleClick}>Mole</div> : 
-            <div className="no-mole">No mole</div>}
+            <div className="with-mole" onClick={this.onMoleClick}><img src="cartoon-funny-mole.jpg"/></div> : 
+            <div className="no-mole"></div>}
           </div>            
           <div className="row">
             {board[6] && board[6].value === 1 ? 
-            <div className="with-mole" onClick={this.onMoleClick}>Mole</div> : 
-            <div className="no-mole">No mole</div>}
+            <div className="with-mole" onClick={this.onMoleClick}><img src="cartoon-funny-mole.jpg"/></div> : 
+            <div className="no-mole"></div>}
 
             {board[7] && board[7].value === 1 ? 
-            <div className="with-mole" onClick={this.onMoleClick}>Mole</div> : 
-            <div className="no-mole">No mole</div>}
+            <div className="with-mole" onClick={this.onMoleClick}><img src="cartoon-funny-mole.jpg"/></div> : 
+            <div className="no-mole"></div>}
 
             {board[8] && board[8].value === 1 ? 
-            <div className="with-mole" onClick={this.onMoleClick}>Mole</div> : 
-            <div className="no-mole">No mole</div>}
+            <div className="with-mole" onClick={this.onMoleClick}><img src="cartoon-funny-mole.jpg"/></div> : 
+            <div className="no-mole"></div>}
           </div>
         </div>
       </div>

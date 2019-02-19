@@ -19,8 +19,8 @@ class Timer extends React.Component {
       this.setState({
         seconds: 0
       })
-      this.props.onTimeOut()
       clearInterval(this.interval)
+      this.props.onTimeOut()
     }
   }
 
@@ -33,10 +33,9 @@ class Timer extends React.Component {
   }
 
   render() {
-    return (
-      
+    return (      
       <div>      
-      Time left: {this.state.seconds} s
+        Time left: {this.state.seconds} s
       </div>
     );
   }
