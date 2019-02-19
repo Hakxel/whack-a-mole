@@ -14,12 +14,17 @@ class Board extends React.Component {
   initializeCell = () => {
     // console.log(`board1: ` + this.state.board[0])
     let cell = []
-    for ( let i = 0; i < 9; i++) {
-      cell.push({
-        row: i,
-        column: i,
-        value: 0,
-      })
+    let key = 0
+    for ( let i = 1; i < 4; i++ ) {
+      for ( let j = 1; j< 4; j++ ) {
+        key += 1
+        cell.push({
+          key: key,
+          row: i,
+          column: j,
+          value: 0,
+        })
+      }
     }
     // console.log(`cell row: ` + cell[0].row)
     // console.log(`cell column: ` + cell[0].column)
@@ -68,7 +73,14 @@ class Board extends React.Component {
     let selectedCell = this.state.randomCell || 0
     newCellValue = this.state.board.slice()
     let value = newCellValue[selectedCell].value
-    newCellValue[selectedCell].value = (value === 0) ? 1 : 0
+    for (let i = 0; i < 9; i++) {
+      if(i === selectedCell){
+        newCellValue[selectedCell].value = (value === 0) ? 1 : 0
+      }
+      else {
+        newCellValue[i].value = 0
+      }
+    }
     this.setState({
       board: [...newCellValue]
     })
@@ -81,23 +93,22 @@ class Board extends React.Component {
         <div className="status">
         {randomCell}
         <div>{timer}</div>
-          {(timer < 15) && <Timer onTimeOut = {this.onTimeOut} onTick = {this.onTick}/>}
-            {/* <div>
-              {board[0] && board[randomCell].value === 1 ? <div>Mole</div> : <div>No mole</div>}
-              {board[1] && board[randomCell].value === 1 ? <div>Mole</div> : <div>No mole</div>}
-              {board[2] && board[randomCell].value === 1 ? <div>Mole</div> : <div>No mole</div>}
+          <Timer onTimeOut = {this.onTimeOut} onTick = {this.onTick}/>
+            <div className="row">
+              {board[0] && board[0].value === 1 ? <div>Mole</div> : <div>No mole</div>}
+              {board[1] && board[1].value === 1 ? <div>Mole</div> : <div>No mole</div>}
+              {board[2] && board[2].value === 1 ? <div>Mole</div> : <div>No mole</div>}
               </div>
-              <div>
-              {board[3] && board[randomCell].value === 1 ? <div>Mole</div> : <div>No mole</div>}
-              {board[4] && board[randomCell].value === 1 ? <div>Mole</div> : <div>No mole</div>}
-              {board[5] && board[randomCell].value === 1 ? <div>Mole</div> : <div>No mole</div>}
+              <div className="row">
+              {board[3] && board[3].value === 1 ? <div>Mole</div> : <div>No mole</div>}
+              {board[4] && board[4].value === 1 ? <div>Mole</div> : <div>No mole</div>}
+              {board[5] && board[5].value === 1 ? <div>Mole</div> : <div>No mole</div>}
               </div>
-              <div>
-              {board[6] && board[randomCell].value === 1 ? <div>Mole</div> : <div>No mole</div>}
-              {board[7] && board[randomCell].value === 1 ? <div>Mole</div> : <div>No mole</div>}
-              {board[8] && board[randomCell].value === 1 ? <div>Mole</div> : <div>No mole</div>}
-            </div> */}
-            {board[0] && board[randomCell].value === 1 ? <div>Mole</div> : <div>No mole</div>}
+              <div className="row">
+              {board[6] && board[6].value === 1 ? <div>Mole</div> : <div>No mole</div>}
+              {board[7] && board[7].value === 1 ? <div>Mole</div> : <div>No mole</div>}
+              {board[8] && board[8].value === 1 ? <div>Mole</div> : <div>No mole</div>}
+            </div>
         </div>
       </div>
     )
