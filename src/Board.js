@@ -8,11 +8,11 @@ class Board extends React.Component {
       board: [],
       timer: 0,
       randomCell: 0,
+      points: 0,
     }
   }
 
   initializeCell = () => {
-    // console.log(`board1: ` + this.state.board[0])
     let cell = []
     let key = 0
     for ( let i = 1; i < 4; i++ ) {
@@ -26,9 +26,6 @@ class Board extends React.Component {
         })
       }
     }
-    // console.log(`cell row: ` + cell[0].row)
-    // console.log(`cell column: ` + cell[0].column)
-    // console.log(`cell value: ` + cell[0].value)
     this.setState({
       board: cell       
     })
@@ -86,29 +83,63 @@ class Board extends React.Component {
     })
   }
 
+  onMoleClick = () => {
+    if(this.state.timer < 15) {
+      this.setState({
+        points: this.state.points +5
+      })
+    }
+    else {
+      console.log(`Game over`)
+    }
+  }
+
   render() {
-    const {board, randomCell, timer} = this.state
+    const {board, points} = this.state
     return(
       <div className="Board">
         <div className="status">
-        {randomCell}
-        <div>{timer}</div>
+          Your points: {points}
           <Timer onTimeOut = {this.onTimeOut} onTick = {this.onTick}/>
-            <div className="row">
-              {board[0] && board[0].value === 1 ? <div>Mole</div> : <div>No mole</div>}
-              {board[1] && board[1].value === 1 ? <div>Mole</div> : <div>No mole</div>}
-              {board[2] && board[2].value === 1 ? <div>Mole</div> : <div>No mole</div>}
-              </div>
-              <div className="row">
-              {board[3] && board[3].value === 1 ? <div>Mole</div> : <div>No mole</div>}
-              {board[4] && board[4].value === 1 ? <div>Mole</div> : <div>No mole</div>}
-              {board[5] && board[5].value === 1 ? <div>Mole</div> : <div>No mole</div>}
-              </div>
-              <div className="row">
-              {board[6] && board[6].value === 1 ? <div>Mole</div> : <div>No mole</div>}
-              {board[7] && board[7].value === 1 ? <div>Mole</div> : <div>No mole</div>}
-              {board[8] && board[8].value === 1 ? <div>Mole</div> : <div>No mole</div>}
-            </div>
+          <div className="row">
+            {board[0] && board[0].value === 1 ? 
+            <div className="with-mole" onClick={this.onMoleClick}>Mole</div> : 
+            <div className="no-mole">No mole</div>}
+
+            {board[1] && board[1].value === 1 ? 
+            <div className="with-mole" onClick={this.onMoleClick}>Mole</div> : 
+            <div className="no-mole">No mole</div>}
+
+            {board[2] && board[2].value === 1 ? 
+            <div className="with-mole" onClick={this.onMoleClick}>Mole</div> : 
+            <div className="no-mole">No mole</div>}
+          </div>
+          <div className="row">
+            {board[3] && board[3].value === 1 ? 
+            <div className="with-mole" onClick={this.onMoleClick}>Mole</div> : 
+            <div className="no-mole">No mole</div>}
+
+            {board[4] && board[4].value === 1 ? 
+            <div className="with-mole" onClick={this.onMoleClick}>Mole</div> : 
+            <div className="no-mole">No mole</div>}
+
+            {board[5] && board[5].value === 1 ? 
+            <div className="with-mole" onClick={this.onMoleClick}>Mole</div> : 
+            <div className="no-mole">No mole</div>}
+          </div>            
+          <div className="row">
+            {board[6] && board[6].value === 1 ? 
+            <div className="with-mole" onClick={this.onMoleClick}>Mole</div> : 
+            <div className="no-mole">No mole</div>}
+
+            {board[7] && board[7].value === 1 ? 
+            <div className="with-mole" onClick={this.onMoleClick}>Mole</div> : 
+            <div className="no-mole">No mole</div>}
+
+            {board[8] && board[8].value === 1 ? 
+            <div className="with-mole" onClick={this.onMoleClick}>Mole</div> : 
+            <div className="no-mole">No mole</div>}
+        </div>
         </div>
       </div>
     )
