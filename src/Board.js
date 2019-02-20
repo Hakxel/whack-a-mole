@@ -1,5 +1,5 @@
 import React from 'react'
-import Timer from './Timer'
+// import Timer from './Timer'
 import './Board.css'
 
 class Board extends React.Component {
@@ -7,7 +7,7 @@ class Board extends React.Component {
     super()
     this.state = {
       board: [],
-      timer: 0,
+      timer: 15,
       randomCell: 0,
       points: 0,
       start: false,
@@ -32,11 +32,15 @@ class Board extends React.Component {
       board: cell,
       start: true,       
     })
+
+    this.interval = setInterval(() => this.onTick(), 1000);
   }
   
   onStartClick = () => {
-    this.resetBoard()
-    this.initializeCell()
+    if (this.state.start === false) {
+      this.resetBoard()
+      this.initializeCell()
+    }
   }
 
   onTimeOut = () => {
@@ -45,28 +49,32 @@ class Board extends React.Component {
       finalValues[i].value = 0
     }
     this.setState({
-      board: [...finalValues]
+      board: [...finalValues],
+      start: false,
     })
   }
 
   onTick = () => {
-    if(this.state.timer < 15) {
-      this.increaseTimer()
+    if(this.state.timer > 0) {
+      this.setState({
+        timer: this.state.timer -1
+      })
       this.getRandomCell()
-      this.modifyCell()
+      this.modifyCell()          
     }
     else {
       console.log(`Time up...`)
+      clearInterval(this.interval)
+      this.onTimeOut()
     }
-  }
+  }  
 
   resetBoard() {
     this.setState({
       board: [],
-      timer: 0,
+      timer: 15,
       randomCell: 0,
       points: 0,
-      start: false,
     })
   }
 
@@ -75,12 +83,6 @@ class Board extends React.Component {
     randCell = Math.floor(Math.random() * 9)
     this.setState({
       randomCell: randCell
-    })
-  }
-
-  increaseTimer = () => {
-    this.setState({
-      timer: this.state.timer +1,
     })
   }
  
@@ -104,7 +106,7 @@ class Board extends React.Component {
   }
 
   onMoleClick = () => {
-    if(this.state.timer < 15) {
+    if(this.state.timer > 0) {
       this.setState({
         points: this.state.points +5
       })
@@ -115,13 +117,12 @@ class Board extends React.Component {
   }
 
   render() {
-    const {board, points, start} = this.state
+    const {board, points, timer} = this.state
     return(
       <div className="game-area">
-      <div onClick={this.onStartClick}>Click here to start</div>
         <div className="status">
-          Your points: {points}
-          {start && <Timer onTimeOut = {this.onTimeOut} onTick = {this.onTick}/>}
+          <div>SCORE: {points}</div>
+          <div>TIME: {timer} s</div>
         </div>
         <div className="board">
           <div className="row">
@@ -164,6 +165,7 @@ class Board extends React.Component {
             <div className="no-mole"></div>}
           </div>
         </div>
+        <button className="start-game" onClick={this.onStartClick}>START GAME</button>
       </div>
     )
   }
