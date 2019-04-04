@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
+import './Score.css'
 
 class Score extends Component {
   constructor(props) {
@@ -7,7 +9,10 @@ class Score extends Component {
 
   render(){
     return(
-      <div>This is the score component</div>
+      <div className="scores">
+        <div>Final score: {this.props.location.state.points}</div>
+        <Link to='/'>Play again</Link>
+      </div>
     )
   }
 }

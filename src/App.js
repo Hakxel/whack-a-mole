@@ -7,11 +7,9 @@ import Score from './Score'
 const App = () => {
   return(
     <Router>
-      <div>
         <Route exact path="/" component={Game}></Route>
         <Route path="/board" component={Board}></Route>
         <Route path="/score" component={Score}></Route>
-      </div>
     </Router>
   )
 }

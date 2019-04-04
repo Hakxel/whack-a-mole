@@ -1,3 +1,9 @@
+#root {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
 .game {
   text-align: center;
   background-image: url('./images/backyard-entrance.jpg');
@@ -35,6 +41,10 @@ h2 {
 
 h3 {
   font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.5rem;
 }
 
 .button-wrapper button {

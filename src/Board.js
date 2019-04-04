@@ -1,5 +1,6 @@
 import React from 'react'
-// import Timer from './Timer'
+import {Redirect} from 'react-router-dom'
+import TimeUpNotice from './TimeUpNotice'
 import './Board.css'
 
 class Board extends React.Component {
@@ -7,10 +8,12 @@ class Board extends React.Component {
     super()
     this.state = {
       board: [],
-      timer: 15,
+      timer: 0,
       randomCell: 0,
       points: 0,
       start: false,
+      timeUp: false,
+      redirect: false,
     }
   }
 
@@ -32,15 +35,18 @@ class Board extends React.Component {
       board: cell,
       start: true,       
     })
-
     this.interval = setInterval(() => this.onTick(), 1000);
   }
   
-  onStartClick = () => {
+  onStart = () => {
     if (this.state.start === false) {
       this.resetBoard()
       this.initializeCell()
     }
+  }
+
+  componentDidMount(){
+    this.onStart()
   }
 
   onTimeOut = () => {
@@ -51,30 +57,52 @@ class Board extends React.Component {
     this.setState({
       board: [...finalValues],
       start: false,
+      timeUp: true,
     })
+    console.log(`timer: ` + this.state.timer)
+  }
+
+  setRedirect = () => {
+    clearInterval(this.interval)
+    this.setState({
+      redirect: true,
+    })   
+  }
+
+  updateGame = () => {
+    if(this.state.timer < 15) {
+      this.getRandomCell()
+      this.modifyCell()
+    } else {
+      this.onTimeOut()
+    }
+    if(this.state.timer > 18) {
+      this.setRedirect()        
+    }    
   }
 
   onTick = () => {
-    if(this.state.timer > 0) {
-      this.setState({
-        timer: this.state.timer -1
-      })
-      this.getRandomCell()
-      this.modifyCell()          
-    }
-    else {
-      console.log(`Time up...`)
-      clearInterval(this.interval)
-      this.onTimeOut()
-    }
+    this.setState({
+      timer: this.state.timer +1,
+    })
+    // if(this.state.timer < 15) {
+    //   this.setState({
+    //     countDown: this.state.countDown -1,
+    //   })
+    // }
+    this.updateGame()
   }  
 
   resetBoard() {
     this.setState({
       board: [],
-      timer: 15,
+      timer: 0,
+      countDown: 15,
       randomCell: 0,
       points: 0,
+      start: false,
+      timeUp: false,
+      redirect: false,
     })
   }
 
@@ -106,7 +134,7 @@ class Board extends React.Component {
   }
 
   onMoleClick = () => {
-    if(this.state.timer > 0) {
+    if(this.state.timer < 15) {
       this.setState({
         points: this.state.points +5
       })
@@ -117,12 +145,13 @@ class Board extends React.Component {
   }
 
   render() {
-    const {board, points, timer} = this.state
+    const {board, timer} = this.state
+    const countDown = 15 - timer
     return(
       <div className="game-area">
         <div className="status">
-          <div>SCORE: {points}</div>
-          <div>TIME: {timer} s</div>
+          {/* <div>SCORE: {points}</div> */}
+          <div>TIME: {countDown >= 0 ? countDown : 0} s</div>
         </div>
         <div className="board">
           <div className="row">
@@ -164,8 +193,9 @@ class Board extends React.Component {
             <div className="with-mole" onClick={this.onMoleClick}><img className="mole-img" src="cartoon-mole.png" alt="cartoon mole"/></div> : 
             <div className="no-mole"></div>}
           </div>
+        {this.state.timeUp && <TimeUpNotice />}
         </div>
-        <button className="start-game" onClick={this.onStartClick}>START GAME</button>
+        {this.state.redirect && <Redirect to={{ pathname: '/score', state: {points: `${this.state.points}`}}} />}
       </div>
     )
   }

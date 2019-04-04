@@ -1,0 +1,28 @@
+.time-up {
+  width: 50vw;
+  height: 50vh;
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  justify-content: center;
+  align-content: center;
+  z-index: 5;
+  background-color: rgba(11, 38, 73, 0.767);
+  position: fixed;
+  top: 20vh;
+  left: 25vw;
+}
+
+/* timeup-content {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+} */
+
+h2, h3 {
+  margin: 1em;
+  color: sandybrown;
+  text-align: center;
+  text-justify: bottom;
+}
+

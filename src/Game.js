@@ -24,11 +24,12 @@ class Game extends Component {
           <div className="intro">
             <h1>Going out to play?</h1>
             <h3>Oh, I have news for you...</h3>
-            <h2>There is a mole invasion in the yard!</h2>
-            <h3>Grab a hammer and let's get them all...</h3>
+            <h2>There is a mole in the backyard!</h2>
+            <h4>Get out there and show me what you can do</h4>
+            <h4>5 points every time you hit it!</h4>
           </div>
           <div className="button-wrapper">
-            <button onClick={this.handleButtonClick}>Let's get'em!</button>
+            <button onClick={this.handleButtonClick}>GO!</button>
           </div>        
         </div>
         {this.state.redirect && <Redirect to="/board" />}
