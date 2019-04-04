@@ -127,41 +127,41 @@ class Board extends React.Component {
         <div className="board">
           <div className="row">
             {board[0] && board[0].value === 1 ? 
-            <div className="with-mole" onClick={this.onMoleClick}><img src="cartoon-funny-mole.jpg"/></div> : 
+            <div className="with-mole" onClick={this.onMoleClick}><img className="mole-img" src="cartoon-mole.png" alt="cartoon mole"/></div> : 
             <div className="no-mole"></div>}
 
             {board[1] && board[1].value === 1 ? 
-            <div className="with-mole" onClick={this.onMoleClick}><img src="cartoon-funny-mole.jpg"/></div> : 
+            <div className="with-mole" onClick={this.onMoleClick}><img className="mole-img" src="cartoon-mole.png" alt="cartoon mole"/></div> : 
             <div className="no-mole"></div>}
 
             {board[2] && board[2].value === 1 ? 
-            <div className="with-mole" onClick={this.onMoleClick}><img src="cartoon-funny-mole.jpg"/></div> : 
+            <div className="with-mole" onClick={this.onMoleClick}><img className="mole-img" src="cartoon-mole.png" alt="cartoon mole"/></div> : 
             <div className="no-mole"></div>}
           </div>
           <div className="row">
             {board[3] && board[3].value === 1 ? 
-            <div className="with-mole" onClick={this.onMoleClick}><img src="cartoon-funny-mole.jpg"/></div> : 
+            <div className="with-mole" onClick={this.onMoleClick}><img className="mole-img" src="cartoon-mole.png" alt="cartoon mole"/></div> : 
             <div className="no-mole"></div>}
 
             {board[4] && board[4].value === 1 ? 
-            <div className="with-mole" onClick={this.onMoleClick}><img src="cartoon-funny-mole.jpg"/></div> : 
+            <div className="with-mole" onClick={this.onMoleClick}><img className="mole-img" src="cartoon-mole.png" alt="cartoon mole"/></div> : 
             <div className="no-mole"></div>}
 
             {board[5] && board[5].value === 1 ? 
-            <div className="with-mole" onClick={this.onMoleClick}><img src="cartoon-funny-mole.jpg"/></div> : 
+            <div className="with-mole" onClick={this.onMoleClick}><img className="mole-img" src="cartoon-mole.png" alt="cartoon mole"/></div> : 
             <div className="no-mole"></div>}
           </div>            
           <div className="row">
             {board[6] && board[6].value === 1 ? 
-            <div className="with-mole" onClick={this.onMoleClick}><img src="cartoon-funny-mole.jpg"/></div> : 
+            <div className="with-mole" onClick={this.onMoleClick}><img className="mole-img" src="cartoon-mole.png" alt="cartoon mole"/></div> : 
             <div className="no-mole"></div>}
 
             {board[7] && board[7].value === 1 ? 
-            <div className="with-mole" onClick={this.onMoleClick}><img src="cartoon-funny-mole.jpg"/></div> : 
+            <div className="with-mole" onClick={this.onMoleClick}><img className="mole-img" src="cartoon-mole.png" alt="cartoon mole"/></div> : 
             <div className="no-mole"></div>}
 
             {board[8] && board[8].value === 1 ? 
-            <div className="with-mole" onClick={this.onMoleClick}><img src="cartoon-funny-mole.jpg"/></div> : 
+            <div className="with-mole" onClick={this.onMoleClick}><img className="mole-img" src="cartoon-mole.png" alt="cartoon mole"/></div> : 
             <div className="no-mole"></div>}
           </div>
         </div>
