@@ -21,4 +21,5 @@
 
 .score-wrapper h4 {
   margin-top: 3rem;
+  cursor: pointer;
 }

@@ -69,4 +69,5 @@ h4 {
   background-color: darkblue;
   font-weight: bold;
   border-radius: 5px;
+  cursor: pointer;
 }
