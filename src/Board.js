@@ -1,7 +1,7 @@
 import React from 'react'
 import {Redirect} from 'react-router-dom'
 import TimeUpNotice from './TimeUpNotice'
-import './Board.css'
+import './styles/Board.css'
 
 class Board extends React.Component {
   constructor() {
@@ -59,7 +59,6 @@ class Board extends React.Component {
       start: false,
       timeUp: true,
     })
-    console.log(`timer: ` + this.state.timer)
   }
 
   setRedirect = () => {
@@ -85,11 +84,6 @@ class Board extends React.Component {
     this.setState({
       timer: this.state.timer +1,
     })
-    // if(this.state.timer < 15) {
-    //   this.setState({
-    //     countDown: this.state.countDown -1,
-    //   })
-    // }
     this.updateGame()
   }  
 
@@ -150,7 +144,6 @@ class Board extends React.Component {
     return(
       <div className="game-area">
         <div className="status">
-          {/* <div>SCORE: {points}</div> */}
           <div className="game-text">TIME LEFT: {countDown >= 0 ? countDown : 0} s</div>
         </div>
         <div className="board">

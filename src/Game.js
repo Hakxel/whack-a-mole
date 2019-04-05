@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom'
-import './Game.css'
+import './styles/Game.css'
 
 class Game extends Component {
   constructor(){

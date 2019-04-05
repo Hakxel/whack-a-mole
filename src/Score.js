@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import './Score.css'
+import './styles/Score.css'
 
 class Score extends Component {
   
@@ -26,8 +26,7 @@ class Score extends Component {
               <h3>Show'em who's the boss!</h3>
             </div>}
           </div>
-          <h4><Link to='/' className="game-text">Play again</Link></h4>
-        
+          <h4><Link to='/' className="game-text">Play again</Link></h4>        
         </div>
       </div>
     )

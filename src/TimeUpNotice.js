@@ -1,5 +1,5 @@
 import React from 'react'
-import './TimeUpNotice.css'
+import './styles/TimeUpNotice.css'
 
 const TimeUpNotice = () => {
   return(

@@ -1,7 +1,7 @@
 .score {
   width: 100vw;
   height: 100vh;
-  background-image: url('./images/backyard-blur.jpg');
+  background-image: url('../images/backyard-blur.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
@@ -19,6 +19,6 @@
   align-items: center;
 }
 
-.play-again {
-  color: sandybrown;
+.score-wrapper h4 {
+  margin-top: 3rem;
 }

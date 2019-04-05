@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Game from './Game'
 import Board from './Board'
 import Score from './Score'
+import './styles/Media.css'
 
 const App = () => {
   return(

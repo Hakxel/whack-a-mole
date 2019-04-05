@@ -2,10 +2,6 @@
   width: 50vw;
   height: 50vh;
   display: flex;
-  justify-self: center;
-  align-self: center;
-  justify-content: center;
-  align-content: center;
   z-index: 5;
   background-color: rgba(11, 38, 73, 0.767);
   position: fixed;
@@ -13,16 +9,18 @@
   left: 25vw;
 }
 
-/* timeup-content {
+.timeup-content {
   display: flex;
+  position: relative;
+  flex-direction: column;
   justify-content: center;
-  align-content: center;
-} */
+  align-items: center;
+}
 
-h2, h3 {
+.timeup-content > h2, h3 {
   margin: 1em;
   color: sandybrown;
   text-align: center;
-  text-justify: bottom;
+  text-justify: center;
 }
 

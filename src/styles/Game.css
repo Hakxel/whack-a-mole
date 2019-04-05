@@ -6,7 +6,7 @@
 
 .game {
   text-align: center;
-  background-image: url('./images/backyard-entrance.jpg');
+  background-image: url('../images/backyard-entrance.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -19,6 +19,7 @@
   justify-content: center;
 }
 
+
 .intro-wrapper {
   width: 80%;
   height: 90%;
@@ -28,8 +29,21 @@
   justify-content: space-around;  
 }
 
+.intro {
+  box-sizing: content-box;
+  height: 80%;
+  width: 98%;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 5px;
+}
+
+
 h1, h2, h3, h4, h5, .game-text {
-  color: sandybrown;  
+  color: sandybrown; 
+  text-align: center;
 }
 
 h1 {

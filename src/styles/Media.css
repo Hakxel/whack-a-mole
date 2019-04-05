@@ -1,0 +1,92 @@
+@media (max-width: 920px) {
+
+  .button-wrapper {
+    height: 10%;
+  }
+
+  h1 {
+    font-size: 2.6rem;
+  }
+
+  h2 {
+    font-size: 1.9rem;
+  }
+
+  h3 {
+    font-size: 1.7rem;
+  }
+
+  h4 {
+    font-size: 1.3rem;
+  }
+
+  .with-mole,
+  .no-mole {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  /* TimeUpNotice*************************** */
+  .time-up {
+    width: 25rem;
+    height: 25rem;
+    top: 25vw;
+    left: 25vw;
+  }
+}
+
+@media (max-width: 520px) {
+  
+  /* Game*********************************** */
+  .intro-wrapper {
+    width: 90%;
+    height: 95%;
+  }
+  
+  .intro {
+    align-content: space-around;
+  }
+
+  .button-wrapper {
+    height: 10%;
+  }
+
+  h1 {
+    font-size: 2.3rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+  }
+
+  /* Board********************************* */
+  .board {
+    width: 96vw;
+  }
+
+  .with-mole, .no-mole {
+    width: 35vw;
+    height: 35vw;
+  }
+
+  /* TimeUpNotice*************************** */
+  .time-up {
+    width: 70vw;
+    height: 80vw;
+    top: 30%;
+    left: 15%;
+  }
+
+  /* Score*********************************** */
+  .score-wrapper {
+    height: 90%;
+  }
+}
