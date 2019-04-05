@@ -10,7 +10,6 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  color: sandybrown;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
@@ -26,9 +25,11 @@
   background-color: rgba(11, 38, 73, 0.767);
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-around;  
+}
 
-  
+h1, h2, h3, h4, h5, .game-text {
+  color: sandybrown;  
 }
 
 h1 {

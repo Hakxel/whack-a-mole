@@ -22,10 +22,10 @@ class Game extends Component {
       <div className="game">
         <div className="intro-wrapper">
           <div className="intro">
-            <h1>Going out to play?</h1>
-            <h3>Oh, I have news for you...</h3>
+            <h1>Going outside to play?</h1>
+            <h3>I have news for you...</h3>
             <h2>There is a mole in the backyard!</h2>
-            <h4>Get out there and show me what you can do</h4>
+            <h4>Get out there and show me what you can do.</h4>
             <h4>5 points every time you hit it!</h4>
           </div>
           <div className="button-wrapper">

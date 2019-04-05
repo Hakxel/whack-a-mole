@@ -25,6 +25,15 @@
   margin-bottom: 5px
 }
 
+.status > .game-text {
+  background-color: rgba(11, 38, 73, 0.767);
+  font-size: 1.5rem;
+  width: 15rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
 .row {
   height: 33%;
   width: 100%;

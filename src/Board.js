@@ -151,7 +151,7 @@ class Board extends React.Component {
       <div className="game-area">
         <div className="status">
           {/* <div>SCORE: {points}</div> */}
-          <div>TIME: {countDown >= 0 ? countDown : 0} s</div>
+          <div className="game-text">TIME LEFT: {countDown >= 0 ? countDown : 0} s</div>
         </div>
         <div className="board">
           <div className="row">
