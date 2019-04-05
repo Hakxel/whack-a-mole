@@ -1,0 +1,95 @@
+[33mcommit 47965d99c5c329f3ac7dbcee468113486483d40e[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Hakxel <asiel_montes@yahoo.com>
+Date:   Fri Apr 5 11:45:37 2019 -0400
+
+    Finish media query styles
+
+[33mcommit f252ae2eb9fa875ab0ef2dbddd989282e126bbea[m
+Author: Hakxel <asiel_montes@yahoo.com>
+Date:   Thu Apr 4 22:26:46 2019 -0400
+
+    Finish general game setup
+
+[33mcommit 5fc3568a3b380848d6cfd850251151fee71f6f58[m
+Author: Hakxel <asiel_montes@yahoo.com>
+Date:   Thu Apr 4 19:59:12 2019 -0400
+
+    Fix visible final mole problem
+
+[33mcommit 479bd5e3b066fd8fe4a719afeaaa21babc8d8cdb[m
+Author: Hakxel <asiel_montes@yahoo.com>
+Date:   Thu Apr 4 13:28:57 2019 -0400
+
+    Set up new components and redirect
+
+[33mcommit 1aa32e72251162d2e7d63ce79fe9a92f097fc514[m
+Author: Hakxel <asiel_montes@yahoo.com>
+Date:   Thu Apr 4 10:46:26 2019 -0400
+
+    Animate mole appear/disappear
+
+[33mcommit 7b5bb256a4ed60cf835ecf47ad1d6c5fceb29397[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Hakxel <asiel_montes@yahoo.com>
+Date:   Wed Feb 20 09:07:07 2019 -0500
+
+    Finish basic game implementation
+
+[33mcommit 0220f0d976c98450b26bf8755631a145447b0c20[m
+Author: Hakxel <asiel_montes@yahoo.com>
+Date:   Tue Feb 19 16:15:38 2019 -0500
+
+    Show mole in area
+
+[33mcommit f13429d4208d81a4b9a3cb42a9ca82304eefc3c7[m
+Author: Hakxel <asiel_montes@yahoo.com>
+Date:   Tue Feb 19 14:19:50 2019 -0500
+
+    Add style to board
+
+[33mcommit 50c827b2aebd25aa1f0442563039909db4db5775[m
+Author: Hakxel <asiel_montes@yahoo.com>
+Date:   Tue Feb 19 12:38:36 2019 -0500
+
+    Add points counter on mole hit
+
+[33mcommit ceeb3acb2ca3a8a74b799f13ac173c8b30630504[m
+Author: Hakxel <asiel_montes@yahoo.com>
+Date:   Tue Feb 19 12:18:28 2019 -0500
+
+    Finish random mole generation
+
+[33mcommit a48b20fad2ea78f35d0521af3c6ed456e46b64f4[m
+Author: Hakxel <asiel_montes@yahoo.com>
+Date:   Mon Feb 18 11:15:17 2019 -0500
+
+    remove comments
+
+[33mcommit 372df00e5bcd2f81afd02834082710011d204cb1[m
+Author: Hakxel <asiel_montes@yahoo.com>
+Date:   Mon Feb 18 11:12:45 2019 -0500
+
+    render functionality on tick
+
+[33mcommit 009b542702d8e6d7e793d15f167213c53fa6091a[m
+Author: Hakxel <asiel_montes@yahoo.com>
+Date:   Mon Feb 18 10:51:32 2019 -0500
+
+    generate random cell value
+
+[33mcommit f21b2188186b15948dc8fe3a2fbfe1bc5b83ed7d[m
+Author: Hakxel <asiel_montes@yahoo.com>
+Date:   Mon Feb 18 09:00:37 2019 -0500
+
+    Set cell change on interval
+
+[33mcommit cd02de15aa6b6c3438ef73599bfb3fa117f1ddc6[m
+Author: Hakxel <asiel_montes@yahoo.com>
+Date:   Fri Feb 15 15:35:16 2019 -0500
+
+    broken board
+
+[33mcommit 9491129d1a82b752fc62ec86c23c5d4f487f8383[m
+Author: Hakxel <asiel_montes@yahoo.com>
+Date:   Tue Feb 12 11:40:50 2019 -0500
+
+    Initial commit from Create React App
